@@ -5,6 +5,7 @@ import re
 import pandas as pd
 import os
 from finders import *
+from lib import *
 
 driver = webdriver.Chrome()
 driver.get("https://catalog.uncc.edu/preview_program.php?catoid=23&poid=5567")

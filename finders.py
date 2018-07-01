@@ -1,4 +1,8 @@
-def find(driver, xpath):
+from lib import *
+from selenium import webdriver
+
+
+def find(driver: webdriver, xpath: str) -> str:
     try:
         return driver.find_element_by_xpath(xpath)
     except:
@@ -6,7 +10,7 @@ def find(driver, xpath):
         return None
 
 
-def get_text(driver, xpath):
+def get_text(driver: webdriver, xpath: str) -> str:
     i = 1
     suffix = ''
     result = ""
@@ -18,9 +22,3 @@ def get_text(driver, xpath):
         i = i + 1
         suffix = '[' + str(i) + ']'
     return None if result == "" else result
-
-
-name = '//*[@id="acalog-page-title"]'
-desc = '//*[@id="gateway-page"]/body/table/tbody/tr[3]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[1]/td/p'
-admis_req = '//*[@id="gateway-page"]/body/table/tbody/tr[3]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/div/div[1]'
-deg_req = '//*[@id="gateway-page"]/body/table/tbody/tr[3]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table/tbody/tr[2]/td/div/div[2]'

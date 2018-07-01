@@ -4,14 +4,24 @@ from bs4 import BeautifulSoup
 import re
 import pandas as pd
 import os
-
-Catalog = {}
+from finders import *
 
 driver = webdriver.Chrome()
-driver.get("https://catalog.uncc.edu/preview_program.php?catoid=23&poid=5578")
-soup = BeautifulSoup(driver.page_source, 'lxml')
-Catalog["name"] = str(soup.find(id="acalog-page-title").string).strip()
+driver.get("https://catalog.uncc.edu/preview_program.php?catoid=23&poid=5567")
 
-print(Catalog["name"])
+Program = {}
+
+Program["name"] = find(driver, name).text.strip()
+Program['desc'] = get_text(driver, desc)
+
+
+print("Name: " + Program["name"])
+print("---------------------------------------------------------")
+print("Desc: " + Program["desc"])
+print("---------------------------------------------------------")
+print("Admission: " + Program["admis_req"])
+print("---------------------------------------------------------")
+print("Degree: " + Program["deg_req"])
+print("---------------------------------------------------------")
 
 driver.close()

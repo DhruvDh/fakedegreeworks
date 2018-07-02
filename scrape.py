@@ -10,19 +10,15 @@ from lib import *
 driver = webdriver.Chrome()
 driver.get("https://catalog.uncc.edu/preview_program.php?catoid=23&poid=5567")
 
-Program = {}
+cs = Program()
 
-Program["name"] = find(driver, name).text.strip()
-Program['desc'] = get_text(driver, desc)
+cs.name = find(driver, name).text.strip()
+cs.desc = get_text(driver, desc)
 
 
-print("Name: " + Program["name"])
+print("Name: " + cs.name)
 print("---------------------------------------------------------")
-print("Desc: " + Program["desc"])
-print("---------------------------------------------------------")
-print("Admission: " + Program["admis_req"])
-print("---------------------------------------------------------")
-print("Degree: " + Program["deg_req"])
+print("Desc: " + cs.desc)
 print("---------------------------------------------------------")
 
 driver.close()
